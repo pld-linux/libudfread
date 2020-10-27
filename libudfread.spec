@@ -12,9 +12,9 @@ Group:		Libraries
 Source0:	https://code.videolan.org/videolan/libudfread/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	0502fc712c55ee507c8657742f998141
 URL:		https://code.videolan.org/videolan/libudfread
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
