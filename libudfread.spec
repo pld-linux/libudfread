@@ -3,6 +3,7 @@
 %bcond_without	static_libs	# static library
 #
 Summary:	UDF reader library
+Summary(pl.UTF-8):	Biblioteka do odczytu UDF
 Name:		libudfread
 Version:	1.1.0
 Release:	1
@@ -22,21 +23,35 @@ This library allows reading UDF filesystems, like raw devices and
 image files. The library is created and maintained by VideoLAN Project
 and is used by projects like VLC and Kodi.
 
+%description -l pl.UTF-8
+Ta biblioteka pozwala na odczyt systemów plików UDF, takich jak surowe
+urządzenia oraz pliki obrazów. Biblioteka została stworzona oraz jest
+utrzymywana przez projekt VideoLAN; jest używana w projektach takich
+jak VLC czy Kodi.
+
 %package devel
 Summary:	Header files for libudfread library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libudfread
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libudfread library.
 
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki libudfread.
+
 %package static
 Summary:	Static libudfread library
+Summary(pl.UTF-8):	Statyczna biblioteka libudfread
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libudfread library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka libudfread.
 
 %prep
 %setup -q
