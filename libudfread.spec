@@ -5,12 +5,12 @@
 Summary:	UDF reader library
 Summary(pl.UTF-8):	Biblioteka do odczytu UDF
 Name:		libudfread
-Version:	1.1.0
+Version:	1.1.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://code.videolan.org/videolan/libudfread/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	0502fc712c55ee507c8657742f998141
+# Source0-md5:	d1cd2d83157bff0dd0bdee741176b9e7
 URL:		https://code.videolan.org/videolan/libudfread
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libudfread.so
 %{_includedir}/udfread
-%{_pkgconfigdir}/udfread.pc
+%{_pkgconfigdir}/libudfread.pc
 
 %if %{with static_libs}
 %files static
