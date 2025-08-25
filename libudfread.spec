@@ -5,17 +5,18 @@
 Summary:	UDF reader library
 Summary(pl.UTF-8):	Biblioteka do odczytu UDF
 Name:		libudfread
-Version:	1.1.2
+Version:	1.2.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	https://code.videolan.org/videolan/libudfread/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	6d4e3f60ab2e0b0cd9e333ecbc1966be
+Source0:	https://download.videolan.org/videolan/libudfread/%{name}-%{version}.tar.xz
+# Source0-md5:	fbf0f7cadd4b3e12b54861fc3fa10ecc
 URL:		https://code.videolan.org/videolan/libudfread
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
-BuildRequires:	libtool >= 2:2
-BuildRequires:	rpmbuild(macros) >= 1.527
+BuildRequires:	meson >= 0.60.0
+BuildRequires:	ninja
+BuildRequires:	rpmbuild(macros) >= 2.042
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,24 +58,15 @@ Statyczna biblioteka libudfread.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	%{__enable_disable static_libs static}
+%meson \
+	%{!?with_static_libs:--default-library=shared}
 
-%{__make}
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+%meson_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -86,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog
 %attr(755,root,root) %{_libdir}/libudfread.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libudfread.so.0
+%attr(755,root,root) %ghost %{_libdir}/libudfread.so.3
 
 %files devel
 %defattr(644,root,root,755)
